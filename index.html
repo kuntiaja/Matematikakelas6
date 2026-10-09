@@ -5,155 +5,247 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Matematika Kelas 6</title>
 <style>
-:root{--bg:#f4f7fb;--card:#fff;--tx:#1d2733;--pr:#2563eb;--ok:#16a34a;--no:#dc2626;--mu:#64748b}
-@media(prefers-color-scheme:dark){:root{--bg:#0f172a;--card:#1e293b;--tx:#e2e8f0;--mu:#94a3b8}}
+:root{--bg:#f4f6fb;--c:#fff;--t:#0f172a;--m:#64748b;--b:#e5e7eb;--ok:#16a34a;--no:#ef4444;--pr:#4f46e5}
+@media(prefers-color-scheme:dark){:root{--bg:#0b1020;--c:#151b2e;--t:#e8ecf5;--m:#8b97b3;--b:#252d48}}
 *{box-sizing:border-box}
-body{margin:0;font-family:system-ui,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--tx)}
-header{background:var(--pr);color:#fff;padding:16px;text-align:center}
-header h1{margin:0;font-size:1.3rem}
-main{max-width:760px;margin:auto;padding:14px}
-.card{background:var(--card);border-radius:14px;padding:14px;margin:10px 0;box-shadow:0 1px 4px #0002}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
-.tema{cursor:pointer;text-align:center;padding:16px 8px;border:2px solid transparent}
-.tema:hover{border-color:var(--pr)}
-.tema .e{font-size:2rem}
-.tema small{color:var(--mu);display:block}
-button{font:inherit;border:0;border-radius:10px;padding:10px 14px;background:var(--pr);color:#fff;cursor:pointer}
-button.alt{background:var(--card);color:var(--tx);border:1px solid var(--mu)}
-.tabs{display:flex;gap:6px;flex-wrap:wrap}
-.tabs button{background:var(--card);color:var(--tx);border:1px solid var(--mu)}
-.tabs button.on{background:var(--pr);color:#fff}
-.rumus{background:#2563eb18;border-left:4px solid var(--pr);padding:8px 12px;margin:8px 0;border-radius:6px;font-family:Consolas,monospace}
-.opt{display:block;width:100%;text-align:left;margin:6px 0;background:var(--card);color:var(--tx);border:1px solid var(--mu)}
-.opt.b{background:var(--ok);color:#fff}.opt.s{background:var(--no);color:#fff}
-input{font:inherit;padding:9px;border-radius:8px;border:1px solid var(--mu);background:var(--card);color:var(--tx);width:100%}
-.bar{height:8px;background:#0002;border-radius:4px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ok)}
-.mu{color:var(--mu)}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--t);line-height:1.55}
+@keyframes up{from{opacity:0;transform:translateY(10px)}}
+.hero{background:linear-gradient(135deg,#4f46e5,#7c3aed 55%,#06b6d4);color:#fff;padding:28px 18px 56px;border-radius:0 0 30px 30px;text-align:center}
+.hero h1{margin:0;font-size:1.6rem}.hero p{margin:6px 0 0;opacity:.9}
+.chips{display:flex;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+.chip{background:#ffffff26;backdrop-filter:blur(6px);padding:6px 14px;border-radius:99px;font-size:.85rem}
+main{max-width:820px;margin:-34px auto 30px;padding:0 14px}
+.card{background:var(--c);border:1px solid var(--b);border-radius:20px;padding:16px;margin:12px 0;box-shadow:0 6px 24px #0f172a14;animation:up .35s both}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.tc{cursor:pointer;color:#fff;border-radius:20px;padding:16px;background:linear-gradient(135deg,hsl(var(--h) 80% 56%),hsl(calc(var(--h) + 35) 80% 44%));box-shadow:0 8px 20px hsl(var(--h) 70% 50%/.3);transition:.2s;animation:up .4s both}
+.tc:hover{transform:translateY(-4px)}.tc .e{font-size:2rem}.tc b{display:block}.tc small{opacity:.9}
+.mini{height:6px;background:#ffffff40;border-radius:9px;margin-top:8px;overflow:hidden}.mini i{display:block;height:100%;background:#fff}
+button{font:inherit;border:0;border-radius:12px;padding:11px 16px;background:var(--pr);color:#fff;cursor:pointer;font-weight:600;transition:.15s}
+button:hover{filter:brightness(1.1)}button.alt{background:var(--c);color:var(--t);border:1px solid var(--b)}
+input{font:inherit;width:100%;padding:11px 14px;border-radius:12px;border:1px solid var(--b);background:var(--bg);color:var(--t)}
+.tabs{display:flex;gap:6px;overflow-x:auto;position:sticky;top:0;background:var(--c);padding:6px 0;z-index:2}
+.tabs button{background:var(--bg);color:var(--m);border-radius:99px;white-space:nowrap}.tabs button.on{background:var(--pr);color:#fff}
+.rumus{background:linear-gradient(90deg,#4f46e51a,transparent);border-left:4px solid var(--pr);padding:10px 14px;margin:8px 0;border-radius:10px;font-family:Consolas,monospace}
+.ct{background:var(--bg);border-radius:14px;padding:12px;margin:10px 0}
+.tip{background:#f59e0b22;border-radius:12px;padding:10px 14px;margin-top:10px}
+.prog{height:8px;background:var(--b);border-radius:9px;overflow:hidden}.prog i{display:block;height:100%;background:linear-gradient(90deg,#4f46e5,#06b6d4);transition:.3s}
+.opt{display:flex;gap:12px;align-items:center;width:100%;text-align:left;margin:8px 0;background:var(--c);color:var(--t);border:2px solid var(--b)}
+.opt b{background:var(--bg);border-radius:9px;width:30px;height:30px;display:grid;place-items:center;flex:none}
+.opt.b{border-color:var(--ok);background:#16a34a22}.opt.s{border-color:var(--no);background:#ef444422}
+.fb{border-radius:14px;padding:12px;margin-top:10px;animation:up .3s both}.fb.ok{background:#16a34a22}.fb.no{background:#ef444422}
+.ring{width:140px;height:140px;border-radius:50%;margin:10px auto;display:grid;place-items:center}
+.ring span{background:var(--c);width:104px;height:104px;border-radius:50%;display:grid;place-items:center;font-size:2rem;font-weight:800}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.mu{color:var(--m)}
 </style>
 </head>
 <body>
-<header><h1>📐 Matematika Kelas 6 SD</h1></header>
+<div class="hero"><h1>📐 Matematika Kelas 6</h1><p>Belajar rumus, paham konsep, latihan 30 soal per tema</p><div class="chips" id="chips"></div></div>
 <main id="app"></main>
 <script>
-// === PENGATURAN: tempel URL Web App Apps Script di sini (opsional) ===
-const API_URL = 'https://script.google.com/macros/s/AKfycbwoaG5xCwUFyr_S0Xajd7Fm6VWfNr_xWDGW_SVISP1kcnkGjci2ypXm7z300Qll4a9L/exec';
+// Tempel URL Web App Apps Script di sini (opsional)
+const API_URL = '';
 
-const T = [
-{id:'bulat',e:'➕',n:'Bilangan Bulat',
- p:'Bilangan bulat terdiri dari bilangan negatif, nol, dan bilangan positif. Pada garis bilangan, bergerak ke kanan berarti bertambah dan ke kiri berarti berkurang. Mengurangi bilangan negatif sama dengan menambah bilangan positif.',
- r:['a − (−b) = a + b','(+) × (+) = +   (−) × (−) = +','(+) × (−) = −   (−) × (+) = −'],
- c:'−5 + 8 = 3, karena dari −5 bergerak 8 langkah ke kanan.<br>7 − (−2) = 7 + 2 = 9.',
- q:[['−7 + 12 = ...',['5','−5','19','−19'],0],['6 − (−4) = ...',['2','10','−2','−10'],1],['(−3) × (−8) = ...',['24','−24','11','−11'],0]]},
-{id:'pecahan',e:'🍰',n:'Pecahan, Desimal & Persen',
- p:'Untuk menjumlah atau mengurang pecahan, samakan dulu penyebutnya. Pecahan, desimal, dan persen bisa saling diubah. Persen berarti "per seratus".',
- r:['a/b + c/d = (a×d + c×b) / (b×d)','Persen = pecahan × 100%','Persen dari bilangan = (p/100) × bilangan'],
- c:'1/2 + 1/4 = 2/4 + 1/4 = 3/4.<br>0,5 = 50%. 10% dari 80 = 0,1 × 80 = 8.',
- q:[['1/2 + 1/4 = ...',['3/4','2/6','1/6','2/4'],0],['0,75 sama dengan ...',['75%','7,5%','57%','70%'],0],['20% dari 150 = ...',['30','20','15','45'],0]]},
-{id:'kpk',e:'🔢',n:'KPK & FPB',
- p:'KPK (Kelipatan Persekutuan Terkecil) adalah kelipatan bersama terkecil. FPB (Faktor Persekutuan Terbesar) adalah faktor bersama terbesar. Gunakan faktorisasi prima: KPK ambil semua faktor dengan pangkat terbesar, FPB ambil faktor yang sama dengan pangkat terkecil.',
- r:['KPK: faktor prima gabungan, pangkat terbesar','FPB: faktor prima sama, pangkat terkecil','KPK × FPB = a × b (untuk dua bilangan)'],
- c:'12 = 2²×3 dan 18 = 2×3². KPK = 2²×3² = 36. FPB = 2×3 = 6.',
- q:[['KPK dari 12 dan 18 adalah ...',['36','6','72','24'],0],['FPB dari 24 dan 36 adalah ...',['12','6','24','4'],0],['Lampu A menyala tiap 6 detik, lampu B tiap 8 detik. Keduanya menyala bersamaan setiap ... detik.',['24','14','48','12'],0]]},
-{id:'pangkat',e:'⬆️',n:'Pangkat & Akar',
- p:'Bilangan berpangkat adalah perkalian berulang. Akar adalah kebalikan pangkat. Bilangan kuadrat: 1, 4, 9, 16, 25, ... Bilangan kubik: 1, 8, 27, 64, 125, ...',
- r:['a² = a × a','a³ = a × a × a','√(a²) = a   dan   ³√(a³) = a'],
- c:'12² = 144, jadi √144 = 12. 3³ = 27, jadi ³√27 = 3.',
- q:[['15² = ...',['225','30','125','215'],0],['√144 = ...',['12','14','72','11'],0],['³√27 = ...',['3','9','6','27'],0]]},
-{id:'skala',e:'🗺️',n:'Perbandingan & Skala',
- p:'Perbandingan membandingkan dua besaran. Skala adalah perbandingan jarak pada peta dengan jarak sebenarnya. Untuk membagi sesuai perbandingan, jumlahkan dulu bagian-bagiannya.',
- r:['Skala = jarak peta : jarak sebenarnya','Jarak sebenarnya = jarak peta ÷ skala','Bagian = (bagian/jumlah bagian) × total'],
- c:'Skala 1:100.000, jarak peta 3 cm, maka jarak sebenarnya = 300.000 cm = 3 km.',
- q:[['Skala 1:200.000, jarak di peta 5 cm. Jarak sebenarnya = ... km',['10','5','20','1'],0],['Uang dibagi dengan perbandingan 3:5, total Rp40.000. Bagian pertama = ...',['Rp15.000','Rp25.000','Rp12.000','Rp20.000'],0],['Kelereng A : B = 2 : 3. Jika A = 10, maka B = ...',['15','20','12','13'],0]]},
-{id:'datar',e:'⭕',n:'Bangun Datar & Lingkaran',
- p:'Luas adalah ukuran daerah di dalam bangun, keliling adalah panjang sisi luarnya. Pada lingkaran, jari-jari (r) setengah diameter (d). Gunakan π = 22/7 jika r kelipatan 7, atau 3,14 jika tidak.',
- r:['Persegi panjang: L = p × l,  K = 2(p + l)','Segitiga: L = ½ × a × t','Trapesium: L = ½ × (a + b) × t','Lingkaran: L = π × r²,  K = 2 × π × r'],
- c:'Lingkaran r = 7 cm: L = 22/7 × 7 × 7 = 154 cm².',
- q:[['Luas lingkaran r = 7 cm (π = 22/7) = ... cm²',['154','44','49','22'],0],['Trapesium sisi sejajar 8 cm dan 12 cm, tinggi 5 cm. Luasnya = ... cm²',['50','100','40','60'],0],['Keliling lingkaran diameter 14 cm (π = 22/7) = ... cm',['44','154','22','88'],0]]},
-{id:'ruang',e:'🧊',n:'Bangun Ruang',
- p:'Volume adalah isi bangun ruang, satuannya pangkat tiga (cm³, m³). Luas permukaan adalah jumlah luas semua sisinya. Satuan 1 liter = 1 dm³ = 1.000 cm³.',
- r:['Kubus: V = s³,  LP = 6s²','Balok: V = p × l × t','Tabung: V = π × r² × t','Kerucut: V = ⅓ × π × r² × t','Bola: V = 4/3 × π × r³','Prisma: V = luas alas × t.  Limas: V = ⅓ × luas alas × t'],
- c:'Kubus rusuk 5 cm: V = 5³ = 125 cm³.',
- q:[['Volume kubus rusuk 6 cm = ... cm³',['216','36','72','180'],0],['Volume balok 10 × 5 × 4 cm = ... cm³',['200','100','150','400'],0],['Volume tabung r = 7 cm, t = 10 cm (π = 22/7) = ... cm³',['1.540','440','154','2.200'],0]]},
-{id:'stat',e:'📊',n:'Statistika (Data)',
- p:'Data bisa diringkas dengan nilai pusat. Rata-rata (mean) adalah jumlah data dibagi banyak data. Median adalah nilai tengah setelah data diurutkan. Modus adalah nilai yang paling sering muncul.',
- r:['Mean = jumlah data ÷ banyak data','Median = nilai tengah (data terurut)','Modus = data paling sering muncul'],
- c:'Data 2, 4, 4, 6, 9: mean = 25/5 = 5, median = 4, modus = 4.',
- q:[['Rata-rata dari 3, 5, 5, 7, 10 adalah ...',['6','5','7','30'],0],['Median dari 3, 5, 5, 7, 10 adalah ...',['5','6','7','10'],0],['Rata-rata 5 nilai adalah 8. Jumlah semua nilai = ...',['40','13','8','45'],0]]},
-{id:'kec',e:'🚗',n:'Kecepatan & Debit',
- p:'Kecepatan menyatakan jarak yang ditempuh tiap satuan waktu. Debit menyatakan volume zat cair yang mengalir tiap satuan waktu. Ingat: 1 jam = 60 menit, 1 menit = 60 detik.',
- r:['v = s ÷ t','s = v × t','t = s ÷ v','Debit = volume ÷ waktu'],
- c:'Motor 40 km/jam selama 2 jam menempuh 40 × 2 = 80 km.',
- q:[['Mobil 60 km/jam selama 3 jam menempuh ... km',['180','20','63','120'],0],['Jarak 120 km ditempuh 2 jam. Kecepatan = ... km/jam',['60','240','118','122'],0],['Bak 600 liter terisi penuh dalam 20 menit. Debit = ... liter/menit',['30','12','620','580'],0]]}
+const R=(a,b)=>Math.floor(Math.random()*(b-a+1))+a, P=a=>a[R(0,a.length-1)];
+const sh=a=>a.map(x=>[Math.random(),x]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]);
+const G=(a,b)=>b?G(b,a%b):a, L=(a,b)=>a/G(a,b)*b;
+const fmt=x=>typeof x==='number'?(+x.toFixed(2)+0).toLocaleString('id-ID'):x;
+const f=x=>x<0?`(${x})`:x, nf=x=>x.toLocaleString('id-ID');
+const fr=(a,b)=>{const d=G(a,b);a/=d;b/=d;return b==1?''+a:a+'/'+b};
+const dc=x=>String(+x.toFixed(3)).replace('.',',');
+function Q(q,a,e,d=[]){
+  let o=[a,...d];
+  if(typeof a==='number')o.push(a+Math.max(1,Math.round(Math.abs(a)*.1)),a-Math.max(1,Math.round(Math.abs(a)*.1)),a*2,a+1,a-1,a+10,a+7);
+  else for(let k=0;o.length<8&&k<30;k++)o.push(fr(R(1,9),R(10,13)));
+  o=[...new Set(o)].filter((x,i)=>i==0||typeof x!=='number'||a<=0||x>0).slice(0,4);
+  o=sh(o);return {q,o,a:o.indexOf(a),e};
+}
+const pr=()=>{let a=R(4,24),b=R(4,24);while(a==b)b=R(4,24);return[a,b]};
+const arr=(n,lo,hi)=>{const s=new Set();while(s.size<n)s.add(R(lo,hi));return[...s]};
+
+const T=[
+{n:'Bilangan Bulat',e:'➕',h:230,
+ p:['Bilangan bulat terdiri dari bilangan negatif (…, −3, −2, −1), nol, dan bilangan positif (1, 2, 3, …).','Pada garis bilangan, makin ke kanan makin besar. Jadi −2 lebih besar dari −7.','Menambah bilangan negatif berarti bergerak ke kiri. Mengurangi bilangan negatif sama dengan menambah bilangan positif.','Pada kali dan bagi, tanda sama menghasilkan positif, tanda berbeda menghasilkan negatif.'],
+ r:['a − (−b) = a + b','a + (−b) = a − b','(+)×(+) = +   (−)×(−) = +','(+)×(−) = −   (−)×(+) = −','Urutan operasi: kurung → kali/bagi → tambah/kurang','|a| = jarak a dari nol, mis. |−6| = 6'],
+ c:[['−8 + 15 = ...','Mulai dari −8, geser 15 langkah ke kanan, hasilnya 7.'],['4 − (−6) × 2 = ...','Kali dahulu: (−6)×2 = −12. Lalu 4 − (−12) = 4 + 12 = 16.']],
+ t:'Gambar garis bilangan kalau bingung dengan tanda negatif.',
+ g:[()=>{const a=R(-20,20),b=R(-20,20);return Q(`${a} + ${f(b)} = ...`,a+b,`${a} + ${f(b)} = ${a+b}`)},
+ ()=>{const a=R(-20,20),b=R(-20,20);return Q(`${a} − ${f(b)} = ...`,a-b,`Mengurangi ${f(b)} sama dengan menambah ${-b}, sehingga hasilnya ${a-b}.`)},
+ ()=>{const a=R(-9,9),b=R(-9,9);return Q(`${f(a)} × ${f(b)} = ...`,a*b,`Tanda sama → positif, tanda beda → negatif. Hasilnya ${a*b}.`)},
+ ()=>{const b=R(2,9)*P([1,-1]),c=R(-9,9);return Q(`${b*c} ÷ ${f(b)} = ...`,c,`${b*c} ÷ ${f(b)} = ${c}`)},
+ ()=>{const t=R(-10,10),d=R(3,15),u=R(3,15);return Q(`Suhu awal ${t}°C, turun ${d}°C, lalu naik ${u}°C. Suhu akhir = ... °C`,t-d+u,`${t} − ${d} + ${u} = ${t-d+u}`)},
+ ()=>{const a=R(-9,9),b=R(2,9),c=R(2,9);return Q(`${a} + ${b} × ${c} = ...`,a+b*c,`Kali dahulu: ${b}×${c} = ${b*c}. Lalu ${a} + ${b*c} = ${a+b*c}.`)}]},
+
+{n:'Pecahan, Desimal & Persen',e:'🍰',h:330,
+ p:['Pecahan menyatakan bagian dari keseluruhan: pembilang (atas) dan penyebut (bawah).','Untuk menjumlah atau mengurang pecahan berpenyebut beda, samakan dulu penyebutnya dengan KPK.','Persen berarti "per seratus". 25% = 25/100 = 0,25.','Diskon dihitung dari harga awal. Harga bayar = harga awal − potongan.'],
+ r:['a/b + c/d = (a×d + c×b) / (b×d)','a/b × c = (a×c) / b','Pecahan → desimal: pembilang ÷ penyebut','Desimal → persen: × 100%','Persen dari n = (p/100) × n','Harga bayar = harga − (diskon% × harga)'],
+ c:[['3/4 dari 48 = ...','48 ÷ 4 = 12, lalu 12 × 3 = 36.'],['Harga Rp80.000 diskon 25%. Harga bayar?','Diskon = 25/100 × 80.000 = 20.000. Bayar = 80.000 − 20.000 = Rp60.000.']],
+ t:'Sederhanakan pecahan di akhir dengan membagi pembilang dan penyebut dengan FPB-nya.',
+ g:[()=>{let b=P([2,3,4,5,6,8]),d=P([2,3,4,5,6,8]);while(d==b)d=P([2,3,4,5,6,8]);const a=R(1,b-1),c=R(1,d-1),n=a*d+c*b,m=b*d;return Q(`${a}/${b} + ${c}/${d} = ...`,fr(n,m),`Samakan penyebut: (${a}×${d} + ${c}×${b}) / ${m} = ${n}/${m} = ${fr(n,m)}`,[fr(a+c,b+d),fr(n+1,m)])},
+ ()=>{const b=P([3,4,5,6,8]),a=R(1,b-1),x=b*R(2,12);return Q(`${a}/${b} dari ${x} = ...`,x/b*a,`${x} ÷ ${b} = ${x/b}, lalu × ${a} = ${x/b*a}.`)},
+ ()=>{const p=P([5,10,20,25,40,50,75]),x=P([40,80,120,200,400,600]);return Q(`${p}% dari ${x} = ...`,x*p/100,`${p}/100 × ${x} = ${x*p/100}`)},
+ ()=>{const h=P([40000,60000,80000,120000,200000]),p=P([10,20,25,30,50]);return Q(`Harga baju Rp${nf(h)} diskon ${p}%. Harga yang dibayar = Rp ...`,h-h*p/100,`Potongan = ${p}% × ${nf(h)} = ${nf(h*p/100)}. Bayar = ${nf(h-h*p/100)}.`)},
+ ()=>{const d=P([.25,.5,.75,.2,.6,.08,1.2,.35]);return Q(`${dc(d)} = ... %`,Math.round(d*100),`${dc(d)} × 100% = ${Math.round(d*100)}%`)},
+ ()=>{const [a,b]=P([[1,2],[3,4],[1,5],[3,5],[1,4],[7,10],[3,8],[1,20]]),v=a/b;return Q(`${a}/${b} dalam bentuk desimal = ...`,dc(v),`${a} ÷ ${b} = ${dc(v)}`,[dc(v*10),dc(v/10),dc(1-v)])}]},
+
+{n:'KPK & FPB',e:'🔢',h:160,
+ p:['Faktor adalah bilangan yang membagi habis suatu bilangan. Kelipatan adalah hasil kali bilangan itu dengan 1, 2, 3, …','KPK adalah kelipatan persekutuan terkecil. Dipakai untuk soal kejadian yang terulang bersamaan.','FPB adalah faktor persekutuan terbesar. Dipakai untuk soal membagi sama rata.','Dengan faktorisasi prima: KPK ambil semua faktor dengan pangkat terbesar, FPB ambil faktor yang sama dengan pangkat terkecil.'],
+ r:['KPK × FPB = a × b (dua bilangan)','KPK: semua faktor prima, pangkat terbesar','FPB: faktor prima sama, pangkat terkecil','12 = 2² × 3,  18 = 2 × 3²','KPK(12,18) = 2² × 3² = 36','FPB(12,18) = 2 × 3 = 6'],
+ c:[['Bus A berangkat tiap 6 menit, bus B tiap 8 menit. Kapan berangkat bersama lagi?','Cari KPK 6 dan 8 = 24. Jadi 24 menit lagi.'],['36 apel dan 48 jeruk dibagi sama rata ke kantong sebanyak mungkin. Berapa kantong?','FPB 36 dan 48 = 12 kantong.']],
+ t:'Kata kunci: "bersamaan lagi" → KPK. "dibagi sama rata, sebanyak-banyaknya" → FPB.',
+ g:[()=>{const [a,b]=pr();return Q(`KPK dari ${a} dan ${b} adalah ...`,L(a,b),`KPK(${a}, ${b}) = ${L(a,b)}`,[G(a,b),a*b])},
+ ()=>{const [a,b]=pr();return Q(`FPB dari ${a*2} dan ${b*2} adalah ...`,G(a*2,b*2),`FPB(${a*2}, ${b*2}) = ${G(a*2,b*2)}`,[L(a*2,b*2),2])},
+ ()=>{let a=P([4,5,6,8,10,12]),b=P([3,5,6,9,10,15]);while(a==b)b=P([3,5,6,9,10,15]);return Q(`Lampu merah menyala tiap ${a} detik, lampu hijau tiap ${b} detik. Keduanya menyala bersamaan setiap ... detik`,L(a,b),`Dicari KPK(${a}, ${b}) = ${L(a,b)}.`)},
+ ()=>{const g=P([4,6,8,12]),m=g*R(2,5);let n=g*R(2,5);while(n==m)n=g*R(2,5);return Q(`Ada ${m} permen dan ${n} cokelat dibagi sama rata ke kantong sebanyak-banyaknya. Banyak kantong = ...`,G(m,n),`FPB(${m}, ${n}) = ${G(m,n)}.`)},
+ ()=>{const a=P([2,3,4,5]),b=P([6,8,9,10]),c=P([12,15,18]);return Q(`KPK dari ${a}, ${b}, dan ${c} adalah ...`,L(L(a,b),c),`KPK(${a}, ${b}) = ${L(a,b)}, lalu KPK dengan ${c} = ${L(L(a,b),c)}.`)}]},
+
+{n:'Pangkat & Akar',e:'⬆️',h:35,
+ p:['Pangkat dua (kuadrat) berarti mengalikan bilangan dengan dirinya sendiri. Pangkat tiga (kubik) mengalikan tiga kali.','Akar adalah kebalikan pangkat. √ untuk akar kuadrat, ³√ untuk akar pangkat tiga.','Hafalkan bilangan kuadrat 1–25 dan bilangan kubik 1–10 agar mengerjakan soal lebih cepat.','Satuan luas berpangkat dua (cm²), satuan volume berpangkat tiga (cm³).'],
+ r:['a² = a × a','a³ = a × a × a','√(a²) = a','³√(a³) = a','a² × a³ = a⁵','Kubik: 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000'],
+ c:[['√169 = ...','13 × 13 = 169, jadi √169 = 13.'],['Luas persegi 81 cm². Berapa kelilingnya?','Sisi = √81 = 9 cm. Keliling = 4 × 9 = 36 cm.']],
+ t:'Untuk akar, tebak puluhannya dulu lalu cek angka satuan paling belakang.',
+ g:[()=>{const n=R(2,25);return Q(`${n}² = ...`,n*n,`${n} × ${n} = ${n*n}`)},
+ ()=>{const n=R(2,25);return Q(`√${nf(n*n)} = ...`,n,`${n} × ${n} = ${n*n}, jadi akarnya ${n}.`)},
+ ()=>{const n=R(2,10);return Q(`${n}³ = ...`,n**3,`${n} × ${n} × ${n} = ${n**3}`)},
+ ()=>{const n=R(2,10);return Q(`³√${nf(n**3)} = ...`,n,`${n} × ${n} × ${n} = ${n**3}, jadi ${n}.`)},
+ ()=>{const a=R(2,12),b=R(2,12);return Q(`${a}² + ${b}² = ...`,a*a+b*b,`${a*a} + ${b*b} = ${a*a+b*b}`)},
+ ()=>{const s=R(2,20);return Q(`Luas persegi ${s*s} cm². Kelilingnya = ... cm`,4*s,`Sisi = √${s*s} = ${s}. Keliling = 4 × ${s} = ${4*s}.`)}]},
+
+{n:'Perbandingan & Skala',e:'🗺️',h:280,
+ p:['Perbandingan membandingkan dua besaran, ditulis a : b. Bentuk sederhananya dibagi FPB.','Perbandingan senilai: jika satu naik, yang lain ikut naik (harga dan jumlah barang).','Perbandingan berbalik nilai: jika satu naik, yang lain turun (pekerja dan lama pekerjaan).','Skala adalah perbandingan jarak pada peta dengan jarak sebenarnya. Skala 1 : 200.000 berarti 1 cm di peta = 200.000 cm = 2 km.'],
+ r:['Skala = jarak peta : jarak sebenarnya','Jarak sebenarnya = jarak peta × penyebut skala','Jarak peta = jarak sebenarnya ÷ penyebut skala','Bagian = (bagian ÷ jumlah bagian) × total','Senilai: a₁/b₁ = a₂/b₂','Berbalik: a₁ × b₁ = a₂ × b₂','1 km = 100.000 cm'],
+ c:[['Skala 1:500.000, jarak di peta 4 cm. Jarak sebenarnya?','4 × 500.000 = 2.000.000 cm = 20 km.'],['6 pekerja selesai dalam 12 hari. Jika 9 pekerja, berapa hari?','Berbalik nilai: 6 × 12 = 72, lalu 72 ÷ 9 = 8 hari.']],
+ t:'Ubah dulu semua ke cm sebelum menghitung skala, lalu ubah hasil ke km.',
+ g:[()=>{const k=P([100000,200000,500000,1000000]),p=R(2,12);return Q(`Skala 1 : ${nf(k)}. Jarak di peta ${p} cm. Jarak sebenarnya = ... km`,p*k/100000,`${p} × ${nf(k)} = ${nf(p*k)} cm = ${p*k/100000} km.`)},
+ ()=>{const a=R(1,5),b=R(2,7),t=(a+b)*R(3,12)*1000;return Q(`Uang Rp${nf(t)} dibagi untuk A dan B dengan perbandingan ${a} : ${b}. Bagian A = Rp ...`,t/(a+b)*a,`Jumlah bagian ${a+b}. A = ${a}/${a+b} × ${nf(t)} = ${nf(t/(a+b)*a)}.`)},
+ ()=>{const a=R(1,5),b=R(2,7),m=R(2,9);return Q(`Perbandingan umur Ani dan Budi = ${a} : ${b}. Jika umur Ani ${a*m} tahun, umur Budi = ... tahun`,b*m,`${a*m} ÷ ${a} = ${m}, lalu ${m} × ${b} = ${b*m}.`)},
+ ()=>{const k=P([100000,200000,500000]),p=R(2,12),d=p*k/100000;return Q(`Jarak sebenarnya ${d} km, skala 1 : ${nf(k)}. Jarak di peta = ... cm`,p,`${d} km = ${nf(d*100000)} cm. ${nf(d*100000)} ÷ ${nf(k)} = ${p} cm.`)},
+ ()=>{const n=R(2,6),h=P([3000,4500,5000,7500]),m=R(7,15);return Q(`${n} buku harganya Rp${nf(n*h)}. Harga ${m} buku = Rp ...`,m*h,`Harga satu buku = ${nf(h)}. ${m} × ${nf(h)} = ${nf(m*h)}.`)},
+ ()=>{const w=P([4,6,8,12]),d=P([6,9,12,18]);let w2=P([2,3,4,6,9,12,18,24]);while((w*d)%w2||w2==w)w2=P([2,3,4,6,9,12,18,24]);return Q(`${w} pekerja menyelesaikan proyek dalam ${d} hari. Jika ${w2} pekerja, selesai dalam ... hari`,w*d/w2,`Berbalik nilai: ${w} × ${d} = ${w*d}, lalu ${w*d} ÷ ${w2} = ${w*d/w2}.`)}]},
+
+{n:'Bangun Datar & Lingkaran',e:'⭕',h:10,
+ p:['Keliling adalah panjang garis di sekeliling bangun. Luas adalah ukuran daerah di dalam bangun.','Pada segitiga dan trapesium, tinggi selalu tegak lurus terhadap alas.','Diameter lingkaran = 2 × jari-jari. π = 22/7 jika r kelipatan 7, atau 3,14 jika tidak.','Bangun gabungan dihitung dengan memecah bangun menjadi bangun sederhana, lalu luasnya dijumlah.'],
+ r:['Persegi: L = s²,  K = 4s','Persegi panjang: L = p × l,  K = 2(p + l)','Segitiga: L = ½ × a × t','Jajar genjang: L = a × t','Trapesium: L = ½ × (a + b) × t','Belah ketupat/layang-layang: L = ½ × d₁ × d₂','Lingkaran: L = π × r²,  K = π × d = 2 × π × r'],
+ c:[['Trapesium sisi sejajar 10 dan 14 cm, tinggi 6 cm. Luasnya?','½ × (10 + 14) × 6 = ½ × 24 × 6 = 72 cm².'],['Keliling lingkaran r = 21 cm (π = 22/7)?','2 × 22/7 × 21 = 132 cm.']],
+ t:'Jangan tertukar: luas pakai satuan kuadrat (cm²), keliling pakai satuan biasa (cm).',
+ g:[()=>{const p=R(5,25),l=R(3,15);return Q(`Persegi panjang ${p} cm × ${l} cm. Luasnya = ... cm²`,p*l,`L = ${p} × ${l} = ${p*l}`)},
+ ()=>{const p=R(5,25),l=R(3,15);return Q(`Keliling persegi panjang ${p} cm × ${l} cm = ... cm`,2*(p+l),`K = 2 × (${p} + ${l}) = ${2*(p+l)}`)},
+ ()=>{const a=2*R(2,15),t=R(3,15);return Q(`Segitiga alas ${a} cm, tinggi ${t} cm. Luasnya = ... cm²`,a*t/2,`L = ½ × ${a} × ${t} = ${a*t/2}`)},
+ ()=>{const a=R(4,12),b=R(4,12),t=2*R(2,8);return Q(`Trapesium sisi sejajar ${a} cm dan ${b} cm, tinggi ${t} cm. Luasnya = ... cm²`,(a+b)*t/2,`L = ½ × (${a}+${b}) × ${t} = ${(a+b)*t/2}`)},
+ ()=>{const a=R(4,20),t=R(3,12);return Q(`Jajar genjang alas ${a} cm, tinggi ${t} cm. Luasnya = ... cm²`,a*t,`L = ${a} × ${t} = ${a*t}`)},
+ ()=>{const r=P([7,14,21]);return Q(`Luas lingkaran jari-jari ${r} cm (π = 22/7) = ... cm²`,22/7*r*r,`L = 22/7 × ${r} × ${r} = ${22/7*r*r}`)},
+ ()=>{const r=P([7,14,21]);return Q(`Keliling lingkaran diameter ${2*r} cm (π = 22/7) = ... cm`,44*r/7,`K = 22/7 × ${2*r} = ${44*r/7}`)}]},
+
+{n:'Bangun Ruang',e:'🧊',h:190,
+ p:['Volume adalah isi bangun ruang, satuannya berpangkat tiga (cm³, m³). Luas permukaan adalah jumlah luas semua sisi.','Prisma dan tabung: volume = luas alas × tinggi. Limas dan kerucut: sepertiga dari itu.','Satu liter sama dengan 1 dm³ = 1.000 cm³. Satu m³ = 1.000 liter.','Jaring-jaring adalah bangun ruang yang dibuka menjadi bidang datar.'],
+ r:['Kubus: V = s³,  LP = 6s²','Balok: V = p×l×t,  LP = 2(pl + pt + lt)','Prisma: V = luas alas × tinggi','Tabung: V = π r² t,  LP = 2π r (r + t)','Limas: V = ⅓ × luas alas × tinggi','Kerucut: V = ⅓ π r² t','Bola: V = 4/3 π r³,  LP = 4π r²'],
+ c:[['Kolam 5 m × 4 m × 2 m. Berapa liter air jika penuh?','V = 5×4×2 = 40 m³ = 40.000 liter.'],['Tabung r = 7 cm, t = 10 cm. Volumenya?','22/7 × 7 × 7 × 10 = 1.540 cm³.']],
+ t:'Selalu samakan satuan dulu (semua cm atau semua m) sebelum menghitung.',
+ g:[()=>{const s=R(2,15);return Q(`Volume kubus rusuk ${s} cm = ... cm³`,s**3,`V = ${s}³ = ${s**3}`)},
+ ()=>{const s=R(2,15);return Q(`Luas permukaan kubus rusuk ${s} cm = ... cm²`,6*s*s,`LP = 6 × ${s}² = ${6*s*s}`)},
+ ()=>{const p=R(3,15),l=R(2,10),t=R(2,10);return Q(`Volume balok ${p} × ${l} × ${t} cm = ... cm³`,p*l*t,`V = ${p} × ${l} × ${t} = ${p*l*t}`)},
+ ()=>{const p=R(3,12),l=R(2,8),t=R(2,8);return Q(`Luas permukaan balok ${p} × ${l} × ${t} cm = ... cm²`,2*(p*l+p*t+l*t),`LP = 2(${p*l} + ${p*t} + ${l*t}) = ${2*(p*l+p*t+l*t)}`)},
+ ()=>{const r=P([7,14]),t=R(2,15);return Q(`Volume tabung r = ${r} cm, t = ${t} cm (π = 22/7) = ... cm³`,22/7*r*r*t,`V = 22/7 × ${r}² × ${t} = ${22/7*r*r*t}`)},
+ ()=>{const r=P([7,14]),t=3*R(1,10);return Q(`Volume kerucut r = ${r} cm, t = ${t} cm (π = 22/7) = ... cm³`,22/7*r*r*t/3,`V = ⅓ × 22/7 × ${r}² × ${t} = ${22/7*r*r*t/3}`)},
+ ()=>{const a=2*R(2,8),t=R(3,10),h=R(4,15);return Q(`Prisma tegak alas segitiga (alas ${a} cm, tinggi ${t} cm), tinggi prisma ${h} cm. Volumenya = ... cm³`,a*t/2*h,`Luas alas = ½×${a}×${t} = ${a*t/2}. V = ${a*t/2} × ${h} = ${a*t/2*h}.`)},
+ ()=>{const p=R(2,6),l=R(2,5),t=R(1,3);return Q(`Bak mandi ${p} m × ${l} m × ${t} m terisi penuh. Banyak air = ... liter`,p*l*t*1000,`V = ${p*l*t} m³ = ${nf(p*l*t*1000)} liter.`)}]},
+
+{n:'Statistika (Data)',e:'📊',h:100,
+ p:['Data dapat diringkas dengan nilai pusat: rata-rata (mean), median, dan modus.','Mean adalah jumlah seluruh data dibagi banyak data. Median adalah nilai tengah data yang sudah diurutkan.','Modus adalah nilai yang paling sering muncul. Jangkauan adalah selisih data terbesar dan terkecil.','Data bisa disajikan dalam tabel, diagram batang, diagram garis, dan diagram lingkaran.'],
+ r:['Mean = jumlah data ÷ banyak data','Jumlah data = mean × banyak data','Median ganjil = data ke-(n+1)/2','Median genap = rata-rata dua data tengah','Modus = data dengan frekuensi terbesar','Jangkauan = data terbesar − data terkecil'],
+ c:[['Data 2, 4, 4, 6, 9. Cari mean, median, modus.','Mean = 25 ÷ 5 = 5. Median = 4. Modus = 4.'],['Rata-rata 4 nilai = 80. Agar rata-rata 5 nilai menjadi 82, nilai kelima?','5×82 − 4×80 = 410 − 320 = 90.']],
+ t:'Urutkan data dari terkecil sebelum mencari median.',
+ g:[()=>{const m=R(70,90),a=[0,0,0,0].map(()=>m+R(-8,8));a.push(5*m-a.reduce((x,y)=>x+y));return Q(`Rata-rata dari ${sh(a).join(', ')} adalah ...`,m,`Jumlah = ${5*m}, dibagi 5 = ${m}.`)},
+ ()=>{const a=arr(5,5,50),s=[...a].sort((x,y)=>x-y);return Q(`Median dari ${a.join(', ')} adalah ...`,s[2],`Urutan: ${s.join(', ')}. Nilai tengah = ${s[2]}.`)},
+ ()=>{const x=R(3,12),o=arr(4,1,15).filter(v=>v!=x).slice(0,3);return Q(`Modus dari ${sh([x,x,x,...o]).join(', ')} adalah ...`,x,`${x} muncul paling sering (3 kali).`)},
+ ()=>{const n=R(4,12),m=R(6,9)*10;return Q(`Rata-rata ${n} nilai adalah ${m}. Jumlah seluruh nilai = ...`,n*m,`${n} × ${m} = ${n*m}`)},
+ ()=>{const a=arr(6,10,90);return Q(`Jangkauan data ${a.join(', ')} adalah ...`,Math.max(...a)-Math.min(...a),`${Math.max(...a)} − ${Math.min(...a)} = ${Math.max(...a)-Math.min(...a)}`)},
+ ()=>{const n=R(3,6),m=R(70,85),m2=m+R(2,5);return Q(`Rata-rata ${n} nilai ulangan = ${m}. Agar rata-rata menjadi ${m2} setelah ada satu nilai lagi, nilai itu harus ...`,(n+1)*m2-n*m,`(${n+1}) × ${m2} − ${n} × ${m} = ${(n+1)*m2-n*m}.`)}]},
+
+{n:'Kecepatan & Debit',e:'🚗',h:250,
+ p:['Kecepatan adalah jarak yang ditempuh tiap satuan waktu, misalnya km/jam atau m/detik.','Debit adalah volume zat cair yang mengalir tiap satuan waktu, misalnya liter/menit.','Gunakan segitiga jarak–kecepatan–waktu: tutup yang dicari, sisanya menunjukkan operasinya.','Dua benda berlawanan arah dan berangkat bersamaan: kecepatan keduanya dijumlah. Searah: dikurangi.'],
+ r:['v = s ÷ t','s = v × t','t = s ÷ v','Debit = volume ÷ waktu','Volume = debit × waktu','Berlawanan arah: t = jarak ÷ (v₁ + v₂)','1 m/detik = 3,6 km/jam','1 jam = 60 menit, 1 menit = 60 detik'],
+ c:[['Motor 45 km/jam selama 2 jam 20 menit. Jaraknya?','2 jam 20 menit = 2⅓ jam. 45 × 7/3 = 105 km.'],['Keran mengisi bak 360 liter dalam 30 menit. Debitnya?','360 ÷ 30 = 12 liter/menit.']],
+ t:'Samakan satuan waktu (jam, menit, detik) sebelum menghitung.',
+ g:[()=>{const v=P([40,50,60,72,80]),t=R(2,6);return Q(`Mobil melaju ${v} km/jam selama ${t} jam. Jarak tempuh = ... km`,v*t,`s = ${v} × ${t} = ${v*t}`)},
+ ()=>{const v=P([45,50,60,70,80]),t=R(2,6);return Q(`Jarak ${v*t} km ditempuh dalam ${t} jam. Kecepatan = ... km/jam`,v,`v = ${v*t} ÷ ${t} = ${v}`)},
+ ()=>{const v=P([40,50,60,75]),t=R(2,8);return Q(`Jarak ${v*t} km ditempuh dengan kecepatan ${v} km/jam. Waktu = ... jam`,t,`t = ${v*t} ÷ ${v} = ${t}`)},
+ ()=>{const t=R(5,25),q=R(10,40);return Q(`Bak ${q*t} liter terisi penuh dalam ${t} menit. Debit air = ... liter/menit`,q,`Debit = ${q*t} ÷ ${t} = ${q}`)},
+ ()=>{const t=R(5,20),q=R(10,40);return Q(`Debit keran ${q} liter/menit. Waktu mengisi ember ${q*t} liter = ... menit`,t,`t = ${q*t} ÷ ${q} = ${t}`)},
+ ()=>{const a=P([40,50,60]),b=P([30,45,70]),t=R(2,5);return Q(`Dua kota berjarak ${(a+b)*t} km. Mobil A (${a} km/jam) dan B (${b} km/jam) berangkat bersamaan berlawanan arah. Bertemu setelah ... jam`,t,`Kecepatan gabungan ${a+b} km/jam. t = ${(a+b)*t} ÷ ${a+b} = ${t}.`)},
+ ()=>{const v=P([5,10,15,20,25,30]);return Q(`${v} m/detik = ... km/jam`,v*3.6,`${v} × 3,6 = ${fmt(v*3.6)}`)}]},
+
+{n:'Satuan & Konversi',e:'⚖️',h:60,
+ p:['Tangga satuan panjang: km, hm, dam, m, dm, cm, mm. Turun satu tangga dikali 10, naik satu tangga dibagi 10.','Satuan berat: ton, kuintal, kg, ons, gram. 1 ton = 1.000 kg, 1 kg = 1.000 gram.','Satuan luas turun satu tangga dikali 100, satuan volume dikali 1.000.','Satuan waktu: 1 jam = 60 menit, 1 menit = 60 detik, 1 hari = 24 jam.'],
+ r:['1 km = 1.000 m','1 m = 100 cm,  1 cm = 10 mm','1 ton = 1.000 kg,  1 kg = 1.000 g','1 liter = 1.000 mL = 1.000 cm³','1 m³ = 1.000 liter','1 hektare = 10.000 m²','1 jam = 60 menit = 3.600 detik'],
+ c:[['3,5 km = ... m','3,5 × 1.000 = 3.500 m.'],['2 jam 15 menit = ... menit','2 × 60 + 15 = 135 menit.']],
+ t:'Turun tangga satuan = kali, naik tangga satuan = bagi.',
+ g:[()=>{const [a,b,k]=P([['km','m',1000],['kg','gram',1000],['ton','kg',1000],['jam','menit',60],['menit','detik',60],['liter','cm³',1000],['m³','liter',1000],['hektare','m²',10000],['m','cm',100],['cm','mm',10]]),x=R(2,9);return Q(`${x} ${a} = ... ${b}`,x*k,`1 ${a} = ${nf(k)} ${b}, jadi ${x} × ${nf(k)} = ${nf(x*k)}.`)},
+ ()=>{const [a,b,k]=P([['km','m',1000],['kg','gram',1000],['ton','kg',1000],['jam','menit',60],['liter','cm³',1000],['m³','liter',1000],['m','cm',100]]),x=R(2,9);return Q(`${nf(x*k)} ${b} = ... ${a}`,x,`${nf(x*k)} ÷ ${nf(k)} = ${x}.`)},
+ ()=>{const j=R(1,5),m=P([10,15,20,30,40,45]);return Q(`${j} jam ${m} menit = ... menit`,j*60+m,`${j} × 60 + ${m} = ${j*60+m}`)},
+ ()=>{const a=R(2,9),b=R(2,9)*50;return Q(`${a} kg + ${b} gram = ... gram`,a*1000+b,`${a} kg = ${nf(a*1000)} g. ${nf(a*1000)} + ${b} = ${nf(a*1000+b)}.`)}]}
 ];
 
-const app = document.getElementById('app');
-const S = JSON.parse(localStorage.getItem('mtk6') || '{"nama":"","skor":{}}');
-const save = () => localStorage.setItem('mtk6', JSON.stringify(S));
-const shuffle = a => a.map(x => [Math.random(), x]).sort((a, b) => a[0] - b[0]).map(x => x[1]);
+const app=document.getElementById('app');
+const S=JSON.parse(localStorage.getItem('mtk6')||'{"nama":"","skor":{}}');
+const save=()=>localStorage.setItem('mtk6',JSON.stringify(S));
+const avg=()=>{const v=Object.values(S.skor);return v.length?Math.round(v.reduce((a,b)=>a+b,0)/v.length):0};
 
-function home() {
-  const done = Object.keys(S.skor).length;
-  app.innerHTML = `
-  <div class="card"><b>Halo${S.nama ? ', ' + S.nama : ''}! 👋</b>
-   <input id="nm" placeholder="Tulis namamu" value="${S.nama}" style="margin-top:8px" oninput="S.nama=this.value;save()">
-   <p class="mu">Selesai ${done} dari ${T.length} tema</p>
-   <div class="bar"><i style="width:${done / T.length * 100}%"></i></div></div>
-  <div class="grid">${T.map((t, i) => `<div class="card tema" onclick="topik(${i})"><div class="e">${t.e}</div><b>${t.n}</b>
-   <small>${S.skor[t.id] != null ? 'Nilai terbaik: ' + S.skor[t.id] : 'Belum dicoba'}</small></div>`).join('')}</div>
-  <div class="card"><b>🏆 Papan Peringkat</b><div id="lb" class="mu">${API_URL ? 'Memuat...' : 'Hubungkan API_URL untuk mengaktifkan.'}</div></div>`;
-  if (API_URL) fetch(API_URL + '?aksi=top').then(r => r.json()).then(d => {
-    document.getElementById('lb').innerHTML = d.top.length ? d.top.map((x, i) => `${i + 1}. ${x.nama} — ${x.poin} poin`).join('<br>') : 'Belum ada data.';
-  }).catch(() => document.getElementById('lb').textContent = 'Gagal memuat.');
+function home(){
+  document.getElementById('chips').innerHTML=`<span class="chip">${T.length} tema</span><span class="chip">✅ ${Object.keys(S.skor).length} selesai</span><span class="chip">⭐ Rata-rata ${avg()}</span>`;
+  app.innerHTML=`<div class="card"><b>Halo${S.nama?', '+S.nama:''}! 👋</b>
+  <input placeholder="Tulis namamu dulu ya" value="${S.nama}" style="margin-top:8px" oninput="S.nama=this.value;save()"></div>
+  <div class="grid">${T.map((t,i)=>{const s=S.skor[t.n];return `<div class="tc" style="--h:${t.h};animation-delay:${i*40}ms" onclick="topik(${i})"><div class="e">${t.e}</div><b>${t.n}</b><small>${s!=null?'Terbaik: '+s:'Belum dicoba'}</small><div class="mini"><i style="width:${s||0}%"></i></div></div>`}).join('')}</div>
+  <div class="card"><b>🏆 Papan Peringkat</b><div id="lb" class="mu">${API_URL?'Memuat...':'Isi API_URL untuk mengaktifkan.'}</div></div>`;
+  if(API_URL)fetch(API_URL).then(r=>r.json()).then(d=>{document.getElementById('lb').innerHTML=d.top.length?d.top.map((x,i)=>`${['🥇','🥈','🥉'][i]||(i+1)+'.'} ${x.nama} — ${x.poin} poin`).join('<br>'):'Belum ada data.'}).catch(()=>document.getElementById('lb').textContent='Gagal memuat.');
 }
 
-function topik(i, tab = 'p') {
-  const t = T[i];
-  const tabs = {p: 'Penjelasan', r: 'Rumus', c: 'Contoh'};
-  let body = '';
-  if (tab === 'p') body = `<p>${t.p}</p>`;
-  if (tab === 'r') body = t.r.map(x => `<div class="rumus">${x}</div>`).join('');
-  if (tab === 'c') body = `<p>${t.c}</p>`;
-  app.innerHTML = `<button class="alt" onclick="home()">← Kembali</button>
-  <div class="card"><h2>${t.e} ${t.n}</h2>
-   <div class="tabs">${Object.keys(tabs).map(k => `<button class="${k === tab ? 'on' : ''}" onclick="topik(${i},'${k}')">${tabs[k]}</button>`).join('')}</div>
-   <div style="margin-top:12px">${body}</div>
-   <p><button onclick="kuis(${i})">✏️ Mulai Latihan Soal (${t.q.length} soal)</button></p></div>`;
+function topik(i,tab='p'){
+  const t=T[i],tabs={p:'📖 Penjelasan',r:'📐 Rumus',c:'💡 Contoh'};
+  let b='';
+  if(tab=='p')b=t.p.map(x=>`<p>${x}</p>`).join('');
+  if(tab=='r')b=t.r.map(x=>`<div class="rumus">${x}</div>`).join('');
+  if(tab=='c')b=t.c.map((x,k)=>`<div class="ct"><b>Contoh ${k+1}:</b> ${x[0]}<br><span class="mu">Pembahasan:</span> ${x[1]}</div>`).join('');
+  app.innerHTML=`<button class="alt" onclick="home()">← Semua tema</button>
+  <div class="card"><h2 style="margin:0 0 6px">${t.e} ${t.n}</h2>
+  <div class="tabs">${Object.keys(tabs).map(k=>`<button class="${k==tab?'on':''}" onclick="topik(${i},'${k}')">${tabs[k]}</button>`).join('')}</div>
+  <div style="margin-top:10px">${b}</div><div class="tip">💡 <b>Tips:</b> ${t.t}</div></div>
+  <div class="card"><b>✏️ Latihan Soal</b><p class="mu" style="margin:4px 0">Soal diacak setiap kali, jadi tidak membosankan.</p>
+  <div class="row"><button onclick="kuis(${i},10)">10 soal</button><button onclick="kuis(${i},20)">20 soal</button><button onclick="kuis(${i},30)">30 soal</button></div></div>`;
 }
 
-let Q;
-function kuis(i) {
-  Q = {i, n: 0, benar: 0, soal: shuffle(T[i].q), kunci: false};
-  soal();
+let Z;
+function kuis(i,n){
+  const t=T[i],soal=[],seen=new Set();
+  for(let k=0,x=0;soal.length<n&&x<n*8;x++){
+    const s=t.g[k%t.g.length]();k++;
+    if(!seen.has(s.q)){seen.add(s.q);soal.push(s)}
+  }
+  Z={i,n:0,ok:0,soal,salah:[],lock:false};tampil();
 }
-function soal() {
-  const t = T[Q.i], s = Q.soal[Q.n];
-  const opsi = shuffle(s[1].map((o, k) => [o, k === s[2]]));
-  Q.opsi = opsi;
-  app.innerHTML = `<div class="card"><span class="mu">${t.n} · Soal ${Q.n + 1}/${Q.soal.length}</span>
-   <h3>${s[0]}</h3>${opsi.map((o, k) => `<button class="opt" onclick="jawab(${k})">${o[0]}</button>`).join('')}
-   <div id="fb"></div></div>`;
-  Q.kunci = false;
+function tampil(){
+  const t=T[Z.i],s=Z.soal[Z.n];Z.lock=false;
+  app.innerHTML=`<div class="card"><div style="display:flex;justify-content:space-between" class="mu"><span>${t.e} ${t.n}</span><span>Soal ${Z.n+1}/${Z.soal.length} · ✅ ${Z.ok}</span></div>
+  <div class="prog" style="margin:8px 0 14px"><i style="width:${Z.n/Z.soal.length*100}%"></i></div>
+  <h3 style="margin:0 0 8px">${s.q}</h3>
+  ${s.o.map((o,k)=>`<button class="opt" onclick="jawab(${k})"><b>${'ABCD'[k]}</b><span>${fmt(o)}</span></button>`).join('')}<div id="fb"></div></div>`;
 }
-function jawab(k) {
-  if (Q.kunci) return;
-  Q.kunci = true;
-  const btn = document.querySelectorAll('.opt');
-  Q.opsi.forEach((o, j) => { if (o[1]) btn[j].classList.add('b'); });
-  const ok = Q.opsi[k][1];
-  if (ok) Q.benar++; else btn[k].classList.add('s');
-  const last = Q.n === Q.soal.length - 1;
-  document.getElementById('fb').innerHTML = `<p>${ok ? '✅ Benar! Hebat!' : '❌ Belum tepat. Pelajari lagi rumusnya ya.'}</p>
-   <button onclick="${last ? 'selesai()' : 'Q.n++;soal()'}">${last ? 'Lihat Hasil' : 'Lanjut →'}</button>`;
+function jawab(k){
+  if(Z.lock)return;Z.lock=true;
+  const s=Z.soal[Z.n],bt=document.querySelectorAll('.opt'),ok=k==s.a,last=Z.n==Z.soal.length-1;
+  bt[s.a].classList.add('b');
+  if(ok)Z.ok++;else{bt[k].classList.add('s');Z.salah.push(s)}
+  document.getElementById('fb').innerHTML=`<div class="fb ${ok?'ok':'no'}"><b>${ok?'✅ Benar! Mantap!':'❌ Belum tepat.'}</b><br>${s.e}</div>
+  <div class="row"><button onclick="${last?'selesai()':'Z.n++;tampil()'}">${last?'Lihat Hasil 🎯':'Lanjut →'}</button></div>`;
 }
-function selesai() {
-  const t = T[Q.i], nilai = Math.round(Q.benar / Q.soal.length * 100);
-  if (S.skor[t.id] == null || nilai > S.skor[t.id]) S.skor[t.id] = nilai;
-  save();
-  if (API_URL && S.nama) fetch(API_URL, {method: 'POST', mode: 'no-cors', headers: {'Content-Type': 'text/plain'},
-    body: JSON.stringify({nama: S.nama, tema: t.n, benar: Q.benar, total: Q.soal.length})}).catch(() => {});
-  app.innerHTML = `<div class="card" style="text-align:center"><h2>${nilai >= 80 ? '🎉 Luar biasa!' : nilai >= 60 ? '👍 Bagus!' : '💪 Ayo coba lagi!'}</h2>
-   <h1>${nilai}</h1><p>Benar ${Q.benar} dari ${Q.soal.length} soal</p>
-   <button onclick="kuis(${Q.i})">Ulangi</button> <button class="alt" onclick="home()">Pilih Tema Lain</button></div>`;
+function selesai(){
+  const t=T[Z.i],N=Z.soal.length,nilai=Math.round(Z.ok/N*100);
+  if(S.skor[t.n]==null||nilai>S.skor[t.n])S.skor[t.n]=nilai;save();
+  if(API_URL&&S.nama)fetch(API_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify({nama:S.nama,tema:t.n,benar:Z.ok,total:N})}).catch(()=>{});
+  app.innerHTML=`<div class="card" style="text-align:center"><h2>${nilai>=80?'🎉 Luar biasa!':nilai>=60?'👍 Bagus!':'💪 Ayo semangat!'}</h2>
+  <div class="ring" style="background:conic-gradient(var(--ok) ${nilai*3.6}deg,var(--b) 0)"><span>${nilai}</span></div>
+  <p>Benar <b>${Z.ok}</b> dari <b>${N}</b> soal</p>
+  <div class="row" style="justify-content:center"><button onclick="kuis(${Z.i},${N})">🔁 Ulangi</button><button class="alt" onclick="topik(${Z.i})">📖 Belajar lagi</button><button class="alt" onclick="home()">Pilih tema</button></div></div>
+  ${Z.salah.length?`<div class="card"><b>📝 Pembahasan soal yang salah</b>${Z.salah.slice(0,10).map(s=>`<div class="ct">${s.q}<br><b>Jawaban: ${fmt(s.o[s.a])}</b><br><span class="mu">${s.e}</span></div>`).join('')}</div>`:''}`;
 }
 home();
 </script>
