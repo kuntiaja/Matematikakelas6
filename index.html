@@ -93,7 +93,6 @@ input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(37,99,235,0.1)
 <main id="app"></main>
 
 <script>
-// Masukkan URL Web App Google Apps Script Anda di sini
 const API_URL = 'https://script.google.com/macros/s/AKfycbwoaG5xCwUFyr_S0Xajd7Fm6VWfNr_xWDGW_SVISP1kcnkGjci2ypXm7z300Qll4a9L/exec';
 
 const R=(a,b)=>Math.floor(Math.random()*(b-a+1))+a, P=a=>a[R(0,a.length-1)];
@@ -340,7 +339,7 @@ const T=[
   n:'Satuan & Konversi', e:'⚖️',
   sub:[
     {
-      t: '1. Konversi Satuan',
+      t: '1. Konsep Konversi Satuan',
       p: ['Turun tangga satuan dikali, naik tangga satuan dibagi.'],
       r: ['1 km = 1.000 m', '1 ton = 1.000 kg', '1 jam = 60 menit'],
       c: [['Berapa meter dalam 3,5 km?', '3,5 × 1.000 = 3.500 meter.']]
@@ -355,8 +354,8 @@ const T=[
 ];
 
 const app=document.getElementById('app');
-const S=JSON.parse(localStorage.getItem('mtk6_pro_v2')||'{"nama":"","skor":{}}');
-const save=()=>localStorage.setItem('mtk6_pro_v2',JSON.stringify(S));
+const S=JSON.parse(localStorage.getItem('mtk6_pro_v3')||'{"nama":"","skor":{}}');
+const save=()=>localStorage.setItem('mtk6_pro_v3',JSON.stringify(S));
 const avg=()=>{const v=Object.values(S.skor);return v.length?Math.round(v.reduce((a,b)=>a+b,0)/v.length):0};
 
 function home(){
@@ -433,8 +432,13 @@ function jawab(k){
   const s=Z.soal[Z.n],bt=document.querySelectorAll('.opt'),ok=k==s.a,last=Z.n==Z.soal.length-1;
   bt[s.a].classList.add('b');
   if(ok)Z.ok++;else{bt[k].classList.add('s');Z.salah.push(s)}
-  document.getElementById('fb').innerHTML=`<div class="fb ${ok?'ok':'no'}"><b>${ok?'✔ Jawaban Benar!':'✖ Belum Tepat.'}</b><br><span style="display:inline-block;margin-top:4px">${s.e}</span></div>
-  <div class="row"><button onclick="${last?'selesai()':'Z.n++;tampilKuis()'}">${last?'Lihat Hasil Evaluasi 🎯':'Lanjut Soal Berikutnya →'}</button></div>`;
+  
+  document.getElementById('fb').innerHTML=`<div class="fb ${ok?'ok':'no'}"><b>${ok?'✔ Jawaban Benar!':'✖ Belum Tepat.'}</b><br><span style="display:inline-block;margin-top:4px">${s.e}</span></div>`;
+  
+  setTimeout(()=>{
+    if(last)selesai();
+    else{Z.n++;tampilKuis();}
+  }, 1200);
 }
 function selesai(){
   const t=T[Z.i],N=Z.soal.length,nilai=Math.round(Z.ok/N*100);
