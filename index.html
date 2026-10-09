@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matematika Kelas 6</title>
+<style>
+:root{--bg:#f4f7fb;--card:#fff;--tx:#1d2733;--pr:#2563eb;--ok:#16a34a;--no:#dc2626;--mu:#64748b}
+@media(prefers-color-scheme:dark){:root{--bg:#0f172a;--card:#1e293b;--tx:#e2e8f0;--mu:#94a3b8}}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--tx)}
+header{background:var(--pr);color:#fff;padding:16px;text-align:center}
+header h1{margin:0;font-size:1.3rem}
+main{max-width:760px;margin:auto;padding:14px}
+.card{background:var(--card);border-radius:14px;padding:14px;margin:10px 0;box-shadow:0 1px 4px #0002}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.tema{cursor:pointer;text-align:center;padding:16px 8px;border:2px solid transparent}
+.tema:hover{border-color:var(--pr)}
+.tema .e{font-size:2rem}
+.tema small{color:var(--mu);display:block}
+button{font:inherit;border:0;border-radius:10px;padding:10px 14px;background:var(--pr);color:#fff;cursor:pointer}
+button.alt{background:var(--card);color:var(--tx);border:1px solid var(--mu)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tabs button{background:var(--card);color:var(--tx);border:1px solid var(--mu)}
+.tabs button.on{background:var(--pr);color:#fff}
+.rumus{background:#2563eb18;border-left:4px solid var(--pr);padding:8px 12px;margin:8px 0;border-radius:6px;font-family:Consolas,monospace}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;background:var(--card);color:var(--tx);border:1px solid var(--mu)}
+.opt.b{background:var(--ok);color:#fff}.opt.s{background:var(--no);color:#fff}
+input{font:inherit;padding:9px;border-radius:8px;border:1px solid var(--mu);background:var(--card);color:var(--tx);width:100%}
+.bar{height:8px;background:#0002;border-radius:4px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ok)}
+.mu{color:var(--mu)}
+</style>
+</head>
+<body>
+<header><h1>📐 Matematika Kelas 6 SD</h1></header>
+<main id="app"></main>
+<script>
+// === PENGATURAN: tempel URL Web App Apps Script di sini (opsional) ===
+const API_URL = 'https://script.google.com/macros/s/AKfycbwoaG5xCwUFyr_S0Xajd7Fm6VWfNr_xWDGW_SVISP1kcnkGjci2ypXm7z300Qll4a9L/exec';
+
+const T = [
+{id:'bulat',e:'➕',n:'Bilangan Bulat',
+ p:'Bilangan bulat terdiri dari bilangan negatif, nol, dan bilangan positif. Pada garis bilangan, bergerak ke kanan berarti bertambah dan ke kiri berarti berkurang. Mengurangi bilangan negatif sama dengan menambah bilangan positif.',
+ r:['a − (−b) = a + b','(+) × (+) = +   (−) × (−) = +','(+) × (−) = −   (−) × (+) = −'],
+ c:'−5 + 8 = 3, karena dari −5 bergerak 8 langkah ke kanan.<br>7 − (−2) = 7 + 2 = 9.',
+ q:[['−7 + 12 = ...',['5','−5','19','−19'],0],['6 − (−4) = ...',['2','10','−2','−10'],1],['(−3) × (−8) = ...',['24','−24','11','−11'],0]]},
+{id:'pecahan',e:'🍰',n:'Pecahan, Desimal & Persen',
+ p:'Untuk menjumlah atau mengurang pecahan, samakan dulu penyebutnya. Pecahan, desimal, dan persen bisa saling diubah. Persen berarti "per seratus".',
+ r:['a/b + c/d = (a×d + c×b) / (b×d)','Persen = pecahan × 100%','Persen dari bilangan = (p/100) × bilangan'],
+ c:'1/2 + 1/4 = 2/4 + 1/4 = 3/4.<br>0,5 = 50%. 10% dari 80 = 0,1 × 80 = 8.',
+ q:[['1/2 + 1/4 = ...',['3/4','2/6','1/6','2/4'],0],['0,75 sama dengan ...',['75%','7,5%','57%','70%'],0],['20% dari 150 = ...',['30','20','15','45'],0]]},
+{id:'kpk',e:'🔢',n:'KPK & FPB',
+ p:'KPK (Kelipatan Persekutuan Terkecil) adalah kelipatan bersama terkecil. FPB (Faktor Persekutuan Terbesar) adalah faktor bersama terbesar. Gunakan faktorisasi prima: KPK ambil semua faktor dengan pangkat terbesar, FPB ambil faktor yang sama dengan pangkat terkecil.',
+ r:['KPK: faktor prima gabungan, pangkat terbesar','FPB: faktor prima sama, pangkat terkecil','KPK × FPB = a × b (untuk dua bilangan)'],
+ c:'12 = 2²×3 dan 18 = 2×3². KPK = 2²×3² = 36. FPB = 2×3 = 6.',
+ q:[['KPK dari 12 dan 18 adalah ...',['36','6','72','24'],0],['FPB dari 24 dan 36 adalah ...',['12','6','24','4'],0],['Lampu A menyala tiap 6 detik, lampu B tiap 8 detik. Keduanya menyala bersamaan setiap ... detik.',['24','14','48','12'],0]]},
+{id:'pangkat',e:'⬆️',n:'Pangkat & Akar',
+ p:'Bilangan berpangkat adalah perkalian berulang. Akar adalah kebalikan pangkat. Bilangan kuadrat: 1, 4, 9, 16, 25, ... Bilangan kubik: 1, 8, 27, 64, 125, ...',
+ r:['a² = a × a','a³ = a × a × a','√(a²) = a   dan   ³√(a³) = a'],
+ c:'12² = 144, jadi √144 = 12. 3³ = 27, jadi ³√27 = 3.',
+ q:[['15² = ...',['225','30','125','215'],0],['√144 = ...',['12','14','72','11'],0],['³√27 = ...',['3','9','6','27'],0]]},
+{id:'skala',e:'🗺️',n:'Perbandingan & Skala',
+ p:'Perbandingan membandingkan dua besaran. Skala adalah perbandingan jarak pada peta dengan jarak sebenarnya. Untuk membagi sesuai perbandingan, jumlahkan dulu bagian-bagiannya.',
+ r:['Skala = jarak peta : jarak sebenarnya','Jarak sebenarnya = jarak peta ÷ skala','Bagian = (bagian/jumlah bagian) × total'],
+ c:'Skala 1:100.000, jarak peta 3 cm, maka jarak sebenarnya = 300.000 cm = 3 km.',
+ q:[['Skala 1:200.000, jarak di peta 5 cm. Jarak sebenarnya = ... km',['10','5','20','1'],0],['Uang dibagi dengan perbandingan 3:5, total Rp40.000. Bagian pertama = ...',['Rp15.000','Rp25.000','Rp12.000','Rp20.000'],0],['Kelereng A : B = 2 : 3. Jika A = 10, maka B = ...',['15','20','12','13'],0]]},
+{id:'datar',e:'⭕',n:'Bangun Datar & Lingkaran',
+ p:'Luas adalah ukuran daerah di dalam bangun, keliling adalah panjang sisi luarnya. Pada lingkaran, jari-jari (r) setengah diameter (d). Gunakan π = 22/7 jika r kelipatan 7, atau 3,14 jika tidak.',
+ r:['Persegi panjang: L = p × l,  K = 2(p + l)','Segitiga: L = ½ × a × t','Trapesium: L = ½ × (a + b) × t','Lingkaran: L = π × r²,  K = 2 × π × r'],
+ c:'Lingkaran r = 7 cm: L = 22/7 × 7 × 7 = 154 cm².',
+ q:[['Luas lingkaran r = 7 cm (π = 22/7) = ... cm²',['154','44','49','22'],0],['Trapesium sisi sejajar 8 cm dan 12 cm, tinggi 5 cm. Luasnya = ... cm²',['50','100','40','60'],0],['Keliling lingkaran diameter 14 cm (π = 22/7) = ... cm',['44','154','22','88'],0]]},
+{id:'ruang',e:'🧊',n:'Bangun Ruang',
+ p:'Volume adalah isi bangun ruang, satuannya pangkat tiga (cm³, m³). Luas permukaan adalah jumlah luas semua sisinya. Satuan 1 liter = 1 dm³ = 1.000 cm³.',
+ r:['Kubus: V = s³,  LP = 6s²','Balok: V = p × l × t','Tabung: V = π × r² × t','Kerucut: V = ⅓ × π × r² × t','Bola: V = 4/3 × π × r³','Prisma: V = luas alas × t.  Limas: V = ⅓ × luas alas × t'],
+ c:'Kubus rusuk 5 cm: V = 5³ = 125 cm³.',
+ q:[['Volume kubus rusuk 6 cm = ... cm³',['216','36','72','180'],0],['Volume balok 10 × 5 × 4 cm = ... cm³',['200','100','150','400'],0],['Volume tabung r = 7 cm, t = 10 cm (π = 22/7) = ... cm³',['1.540','440','154','2.200'],0]]},
+{id:'stat',e:'📊',n:'Statistika (Data)',
+ p:'Data bisa diringkas dengan nilai pusat. Rata-rata (mean) adalah jumlah data dibagi banyak data. Median adalah nilai tengah setelah data diurutkan. Modus adalah nilai yang paling sering muncul.',
+ r:['Mean = jumlah data ÷ banyak data','Median = nilai tengah (data terurut)','Modus = data paling sering muncul'],
+ c:'Data 2, 4, 4, 6, 9: mean = 25/5 = 5, median = 4, modus = 4.',
+ q:[['Rata-rata dari 3, 5, 5, 7, 10 adalah ...',['6','5','7','30'],0],['Median dari 3, 5, 5, 7, 10 adalah ...',['5','6','7','10'],0],['Rata-rata 5 nilai adalah 8. Jumlah semua nilai = ...',['40','13','8','45'],0]]},
+{id:'kec',e:'🚗',n:'Kecepatan & Debit',
+ p:'Kecepatan menyatakan jarak yang ditempuh tiap satuan waktu. Debit menyatakan volume zat cair yang mengalir tiap satuan waktu. Ingat: 1 jam = 60 menit, 1 menit = 60 detik.',
+ r:['v = s ÷ t','s = v × t','t = s ÷ v','Debit = volume ÷ waktu'],
+ c:'Motor 40 km/jam selama 2 jam menempuh 40 × 2 = 80 km.',
+ q:[['Mobil 60 km/jam selama 3 jam menempuh ... km',['180','20','63','120'],0],['Jarak 120 km ditempuh 2 jam. Kecepatan = ... km/jam',['60','240','118','122'],0],['Bak 600 liter terisi penuh dalam 20 menit. Debit = ... liter/menit',['30','12','620','580'],0]]}
+];
+
+const app = document.getElementById('app');
+const S = JSON.parse(localStorage.getItem('mtk6') || '{"nama":"","skor":{}}');
+const save = () => localStorage.setItem('mtk6', JSON.stringify(S));
+const shuffle = a => a.map(x => [Math.random(), x]).sort((a, b) => a[0] - b[0]).map(x => x[1]);
+
+function home() {
+  const done = Object.keys(S.skor).length;
+  app.innerHTML = `
+  <div class="card"><b>Halo${S.nama ? ', ' + S.nama : ''}! 👋</b>
+   <input id="nm" placeholder="Tulis namamu" value="${S.nama}" style="margin-top:8px" oninput="S.nama=this.value;save()">
+   <p class="mu">Selesai ${done} dari ${T.length} tema</p>
+   <div class="bar"><i style="width:${done / T.length * 100}%"></i></div></div>
+  <div class="grid">${T.map((t, i) => `<div class="card tema" onclick="topik(${i})"><div class="e">${t.e}</div><b>${t.n}</b>
+   <small>${S.skor[t.id] != null ? 'Nilai terbaik: ' + S.skor[t.id] : 'Belum dicoba'}</small></div>`).join('')}</div>
+  <div class="card"><b>🏆 Papan Peringkat</b><div id="lb" class="mu">${API_URL ? 'Memuat...' : 'Hubungkan API_URL untuk mengaktifkan.'}</div></div>`;
+  if (API_URL) fetch(API_URL + '?aksi=top').then(r => r.json()).then(d => {
+    document.getElementById('lb').innerHTML = d.top.length ? d.top.map((x, i) => `${i + 1}. ${x.nama} — ${x.poin} poin`).join('<br>') : 'Belum ada data.';
+  }).catch(() => document.getElementById('lb').textContent = 'Gagal memuat.');
+}
+
+function topik(i, tab = 'p') {
+  const t = T[i];
+  const tabs = {p: 'Penjelasan', r: 'Rumus', c: 'Contoh'};
+  let body = '';
+  if (tab === 'p') body = `<p>${t.p}</p>`;
+  if (tab === 'r') body = t.r.map(x => `<div class="rumus">${x}</div>`).join('');
+  if (tab === 'c') body = `<p>${t.c}</p>`;
+  app.innerHTML = `<button class="alt" onclick="home()">← Kembali</button>
+  <div class="card"><h2>${t.e} ${t.n}</h2>
+   <div class="tabs">${Object.keys(tabs).map(k => `<button class="${k === tab ? 'on' : ''}" onclick="topik(${i},'${k}')">${tabs[k]}</button>`).join('')}</div>
+   <div style="margin-top:12px">${body}</div>
+   <p><button onclick="kuis(${i})">✏️ Mulai Latihan Soal (${t.q.length} soal)</button></p></div>`;
+}
+
+let Q;
+function kuis(i) {
+  Q = {i, n: 0, benar: 0, soal: shuffle(T[i].q), kunci: false};
+  soal();
+}
+function soal() {
+  const t = T[Q.i], s = Q.soal[Q.n];
+  const opsi = shuffle(s[1].map((o, k) => [o, k === s[2]]));
+  Q.opsi = opsi;
+  app.innerHTML = `<div class="card"><span class="mu">${t.n} · Soal ${Q.n + 1}/${Q.soal.length}</span>
+   <h3>${s[0]}</h3>${opsi.map((o, k) => `<button class="opt" onclick="jawab(${k})">${o[0]}</button>`).join('')}
+   <div id="fb"></div></div>`;
+  Q.kunci = false;
+}
+function jawab(k) {
+  if (Q.kunci) return;
+  Q.kunci = true;
+  const btn = document.querySelectorAll('.opt');
+  Q.opsi.forEach((o, j) => { if (o[1]) btn[j].classList.add('b'); });
+  const ok = Q.opsi[k][1];
+  if (ok) Q.benar++; else btn[k].classList.add('s');
+  const last = Q.n === Q.soal.length - 1;
+  document.getElementById('fb').innerHTML = `<p>${ok ? '✅ Benar! Hebat!' : '❌ Belum tepat. Pelajari lagi rumusnya ya.'}</p>
+   <button onclick="${last ? 'selesai()' : 'Q.n++;soal()'}">${last ? 'Lihat Hasil' : 'Lanjut →'}</button>`;
+}
+function selesai() {
+  const t = T[Q.i], nilai = Math.round(Q.benar / Q.soal.length * 100);
+  if (S.skor[t.id] == null || nilai > S.skor[t.id]) S.skor[t.id] = nilai;
+  save();
+  if (API_URL && S.nama) fetch(API_URL, {method: 'POST', mode: 'no-cors', headers: {'Content-Type': 'text/plain'},
+    body: JSON.stringify({nama: S.nama, tema: t.n, benar: Q.benar, total: Q.soal.length})}).catch(() => {});
+  app.innerHTML = `<div class="card" style="text-align:center"><h2>${nilai >= 80 ? '🎉 Luar biasa!' : nilai >= 60 ? '👍 Bagus!' : '💪 Ayo coba lagi!'}</h2>
+   <h1>${nilai}</h1><p>Benar ${Q.benar} dari ${Q.soal.length} soal</p>
+   <button onclick="kuis(${Q.i})">Ulangi</button> <button class="alt" onclick="home()">Pilih Tema Lain</button></div>`;
+}
+home();
+</script>
+</body>
+</html>
