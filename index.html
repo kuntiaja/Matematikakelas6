@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Perpustakaan & Kuis Matematika Kelas 6</title>
+<title>Perpustakaan & Kuis Matematika Kelas 6 Lengkap</title>
 <style>
 :root{
   --bg: #f8fafc;
@@ -86,17 +86,14 @@ input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(37,99,235,0.1)
 </head>
 <body>
 <div class="hero">
-  <h1>📐 Perpustakaan & Kuis Matematika Kelas 6</h1>
+  <h1>📐 Perpustakaan & Kuis Matematika Kelas 6 Lengkap</h1>
   <p>Pusat belajar konsep mendalam, rangkuman rumus, dan latihan terstruktur.</p>
   <div class="chips" id="chips"></div>
 </div>
 <main id="app"></main>
 
 <script>
-// =========================================================================
-// PENTING: Masukkan URL Web App Google Apps Script Anda di dalam tanda kutip ini!
-// Contoh: const API_URL = 'https://script.google.com/macros/s/AKfycb.../exec';
-// =========================================================================
+// Masukkan URL Web App Google Apps Script Anda di sini
 const API_URL = '';
 
 const R=(a,b)=>Math.floor(Math.random()*(b-a+1))+a, P=a=>a[R(0,a.length-1)];
@@ -275,26 +272,34 @@ const T=[
   ]
 },
 {
-  n:'Bangun Ruang', e:'🧊',
+  n:'Bangun Ruang (Lengkap)', e:'🧊',
   sub:[
     {
-      t: '1. Volume Kubus & Balok',
-      p: ['Volume menyatakan isi ruang tiga dimensi bersatuan kubik.'],
-      r: ['Kubus: V = s³', 'Balok: V = p × l × t'],
-      c: [['Hitung volume balok 10 × 5 × 4 cm.', 'V = 10 × 5 × 4 = 200 cm³.']]
+      t: '1. Kubus dan Balok',
+      p: ['Kubus memiliki 6 sisi persegi yang sama besar. Balok memiliki 3 pasang sisi berhadapan yang sama.', 'Volume kubus dihitung dari sisi³ dan luas permukaan 6s².'],
+      r: ['Kubus: V = s³, LP = 6s²', 'Balok: V = p × l × t, LP = 2(pl + pt + lt)'],
+      c: [['Hitung volume kubus dengan panjang rusuk 8 cm.', 'V = 8³ = 8 × 8 × 8 = 512 cm³.']]
     },
     {
-      t: '2. Tabung & Kerucut',
-      p: ['Tabung: Luas alas × tinggi. Kerucut: Sepertiga dari volume tabung.'],
-      r: ['Tabung: V = π × r² × t', 'Kerucut: V = ⅓ × π × r² × t'],
-      c: [['Volume tabung r = 7 cm, t = 10 cm (π = 22/7)?', 'V = 22/7 × 7² × 10 = 1.540 cm³.']]
+      t: '2. Prisma dan Limas',
+      p: ['Prisma adalah bangun ruang yang alas dan tutupnya kongruen dan sejajar. Rumus volumenya: Luas Alas × Tinggi.', 'Limas adalah bangun ruang dengan alas segi-n dan sisi tegak berbentuk segitiga. Volumenya: ⅓ × Luas Alas × Tinggi.'],
+      r: ['Prisma: V = Luas Alas × Tinggi', 'Limas: V = ⅓ × Luas Alas × Tinggi'],
+      c: [['Volume limas dengan luas alas 30 cm² dan tinggi 12 cm?', 'V = ⅓ × 30 × 12 = 120 cm³.']]
+    },
+    {
+      t: '3. Tabung, Kerucut, dan Bola',
+      p: ['Tabung memiliki alas dan tutup berbentuk lingkaran. Kerucut memiliki alas lingkaran dan satu titik puncak.', 'Bola adalah bangun ruang sisi lengkung simetris penuh.'],
+      r: ['Tabung: V = π × r² × t', 'Kerucut: V = ⅓ × π × r² × t', 'Bola: V = 4/3 × π × r³'],
+      c: [['Volume kerucut dengan r = 7 cm dan t = 9 cm (π = 22/7)?', 'V = ⅓ × 22/7 × 7² × 9 = 462 cm³.']]
     }
   ],
-  tTip:'Samakan satuan (cm atau m) sebelum menghitung.',
+  tTip:'Ingat selalu beda pengali volume: Prisma/Tabung utuh, sedangkan Limas/Kerucut selalu dikalikan ⅓.',
   g:[
     ()=>{const s=R(2,15);return Q(`Volume kubus rusuk ${s} cm = ... cm³`,s**3,`V = ${s}³ = ${s**3}`)},
     ()=>{const p=R(3,15),l=R(2,10),t=R(2,10);return Q(`Volume balok ${p} × ${l} × ${t} cm = ... cm³`,p*l*t,`V = ${p} × ${l} × ${t} = ${p*l*t}`)},
-    ()=>{const r=P([7,14]),t=R(2,15);return Q(`Volume tabung r = ${r} cm, t = ${t} cm (π = 22/7) = ... cm³`,22/7*r*r*t,`V = 22/7 × ${r}² × ${t} = ${22/7*r*r*t}`)}
+    ()=>{const r=P([7,14]),t=R(2,15);return Q(`Volume tabung r = ${r} cm, t = ${t} cm (π = 22/7) = ... cm³`,22/7*r*r*t,`V = 22/7 × ${r}² × ${t} = ${22/7*r*r*t}`)},
+    ()=>{const r=P([7,14]),t=3*R(1,10);return Q(`Volume kerucut r = ${r} cm, t = ${t} cm (π = 22/7) = ... cm³`,22/7*r*r*t/3,`V = ⅓ × 22/7 × ${r}² × ${t} = ${22/7*r*r*t/3}`)},
+    ()=>{const a=2*R(2,8),t=R(3,10),h=R(4,15);return Q(`Prisma alas segitiga (alas ${a} cm, tinggi ${t} cm), tinggi prisma ${h} cm. Volume = ... cm³`,a*t/2*h,`Luas alas = ½×${a}×${t} = ${a*t/2}. V = ${a*t/2} × ${h} = ${a*t/2*h}.`)}
   ]
 },
 {
@@ -350,8 +355,8 @@ const T=[
 ];
 
 const app=document.getElementById('app');
-const S=JSON.parse(localStorage.getItem('mtk6_pro')||'{"nama":"","skor":{}}');
-const save=()=>localStorage.setItem('mtk6_pro',JSON.stringify(S));
+const S=JSON.parse(localStorage.getItem('mtk6_pro_v2')||'{"nama":"","skor":{}}');
+const save=()=>localStorage.setItem('mtk6_pro_v2',JSON.stringify(S));
 const avg=()=>{const v=Object.values(S.skor);return v.length?Math.round(v.reduce((a,b)=>a+b,0)/v.length):0};
 
 function home(){
